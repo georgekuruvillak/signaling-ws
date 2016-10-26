@@ -123,7 +123,7 @@ wss.on('connection', function(ws) {
         break;
 
         case 'iceCandidate':
-            if (message.name == 'kms'){
+            /*if (message.name == 'kms'){
                 var peer = userRegistry.getByName('peer');
                 if (peer){
                     console.log("Forwarding to peer.")
@@ -135,7 +135,7 @@ wss.on('connection', function(ws) {
                     console.log("Forwarding to kms.")
                     kms.sendMessage(message);
                 }
-            }
+            }*/
         break;
 
         default:
