@@ -113,6 +113,15 @@ wss.on('connection', function(ws) {
             }
         break;
 
+        case 'sdpAnswer':
+           console.log("Received sdpOffer from " + message.name);
+           var peer = userRegistry.getByName('peer');
+           if(peer){
+                console.log("Forwarding to peer.");
+                peer.sendMessage(message);
+            }
+        break;
+
         case 'iceCandidate':
             if (message.name == 'kms'){
                 var peer = userRegistry.getByName('peer');
