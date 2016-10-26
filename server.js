@@ -109,7 +109,7 @@ wss.on('connection', function(ws) {
            var kms = userRegistry.getByName('kms');
            if(kms){
                 console.log("Forwarding to kms.");
-                kms.sendMessage(JSON.stringify(message));
+                kms.sendMessage(message);
             }
         break;
 
