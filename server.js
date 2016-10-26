@@ -106,8 +106,8 @@ wss.on('connection', function(ws) {
 
         case 'sdpOffer':
            console.log("Received sdpOffer from " + message.name);
-           kms_websocket = userRegistry.getByName('KMS').ws;
-           if(kms_websocket){
+           var kms = userRegistry.getByName('KMS');
+           if(kms.ws){
                 console.log("Forwarding to KMS.");
                 kms_websocket.send(JSON.stringify(message));
             }
