@@ -108,7 +108,6 @@ wss.on('connection', function(ws) {
            console.log("Received sdpOffer from " + message.name);
            var kms = userRegistry.getByName('kms');
            if(kms){
-                console.log(JSON.stringify(kms));
                 console.log("Forwarding to kms.");
                 kms.sendMessage(JSON.stringify(message));
             }
