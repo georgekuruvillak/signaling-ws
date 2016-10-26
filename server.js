@@ -94,15 +94,24 @@ wss.on('connection', function(ws) {
     });
 
     ws.on('message', function(_message) {
-	console.log(_message);
+	    console.log(_message);
         var message = JSON.parse(_message);
         console.log('Received message ', message);
 
         switch (message.id) {
 	
-	case 'register':
-	    register(message.id, message.name, message.isKMS, ws);
-	    break;
+	    case 'register':
+	       register(message.id, message.name, message.isKMS, ws);
+	       break;
+
+        case 'sdpOffer':
+           console.log("Received sdpOffer from " + message.name);
+           kms_websocket = userRegistry.getByName('KMS').ws;
+           if(kms_websocket){
+                console.log("Forwarding to KMS.");
+                kms_websocket.send(JSON.stringify(message));
+            }
+        break;
 
         default:
             ws.send(JSON.stringify({
