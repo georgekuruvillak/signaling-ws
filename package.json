@@ -1,0 +1,12 @@
+{
+  "name": "camera",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "express": "~4.12.4",
+    "ws": "~1.0.1"
+  },
+  "devDependencies": {
+    "bower": "^1.4.1"
+  }
+}
