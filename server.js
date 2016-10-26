@@ -106,10 +106,10 @@ wss.on('connection', function(ws) {
 
         case 'sdpOffer':
            console.log("Received sdpOffer from " + message.name);
-           var kms = userRegistry.getByName('KMS');
+           var kms = userRegistry.getByName('kms');
            if(kms){
                 console.log(JSON.stringify(kms));
-                console.log("Forwarding to KMS.");
+                console.log("Forwarding to kms.");
                 kms.sendMessage(JSON.stringify(message));
             }
         break;
@@ -140,8 +140,8 @@ function register(id, name, isKMS, ws, callback) {
         return onError("User " + name + " is already registered");
     }
 
-    if (name == 'KMS' && !isKMS){
-	return onError("User " + name + " has name KMS but is not KMS");
+    if (name == 'kms' && !isKMS){
+	return onError("User " + name + " has name kms but is not kms");
     }
 
     userRegistry.register(new UserSession(name, ws));
