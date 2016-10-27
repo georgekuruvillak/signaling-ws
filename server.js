@@ -105,7 +105,8 @@ wss.on('connection', function(ws) {
 	       break;
 
         case 'sdpOffer':
-           console.log("Received sdpOffer from " + message.name);
+
+           console.log("Received sdpOffer " + JSON.stringify(message));
            var kms = userRegistry.getByName('kms');
            if(kms){
                 console.log("Forwarding to kms.");
@@ -114,7 +115,7 @@ wss.on('connection', function(ws) {
         break;
 
         case 'sdpAnswer':
-           console.log("Received sdpOffer from " + message.name);
+           console.log("Received sdpAnswer " + JSON.stringify(message));
            var peer = userRegistry.getByName('peer');
            if(peer){
                 console.log("Forwarding to peer.");
